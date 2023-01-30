@@ -28,17 +28,16 @@
  replay-btn" aria-hidden="true"></i></a>
     <div class="post-title">
         <p>
-            广告数据定量分析
+            如何在服务器上搭建jupyterlab环境并支持异地访问
         </p>
         <hr>
     </div>
     <div class="post-content">
-        <h2 id="愿景：为客户的广告投放创造更大的价值"><a href="#愿景：为客户的广告投放创造更大的价值" class="headerlink" title="愿景：为客户的广告投放创造更大的价值"></a>愿景：为客户的广告投放创造更大的价值</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol>
-<li>广告优化师提升方向：通过科学的数据定量分析，从KPI出发以终为始，精益优化。</li>
-<li>提高广告优化岗位的技术含量和经济价值。</li>
-</ol>
-<h1 id="第一章：广告优化中的统计学"><a href="#第一章：广告优化中的统计学" class="headerlink" title="第一章：广告优化中的统计学"></a>第一章：广告优化中的统计学</h1><p>目标： 了解统计学知识，掌握科学的数据分析方法论，并在广告优化中践行，以实现数据驱动的广告分析和效果优化。<br>学会运用统计学知识，了解统计学和公告数据定量分析的主要思想和理念。</p>
-<h2 id="1-1-统计学是什么"><a href="#1-1-统计学是什么" class="headerlink" title="1.1 统计学是什么?"></a>1.1 统计学是什么?</h2><p>统计学是通过 收集数据–分析数据–由数据得出结论等手段, 以达到推测所测对象的本质,甚至预测对象未来的一门综合性科学.</p>
+        <h1 id="安装jupyterlab"><a href="#安装jupyterlab" class="headerlink" title="安装jupyterlab"></a>安装jupyterlab</h1><p>pip install –upgrade jupyter jupyterlab</p>
+<h1 id="生成JupyerLab配置文件"><a href="#生成JupyerLab配置文件" class="headerlink" title="生成JupyerLab配置文件"></a>生成JupyerLab配置文件</h1><p>jupyter lab –generate-config<br>    配置文件默认保存在: &#x2F;home&#x2F;UserName&#x2F;.jupyter&#x2F;jupyter_lab_config.py</p>
+<h1 id="设置jupyterlab登录密码"><a href="#设置jupyterlab登录密码" class="headerlink" title="设置jupyterlab登录密码"></a>设置jupyterlab登录密码</h1><p>ipython3<br>from jupyter_server.auth import passwd<br>passwd()<br>输入密码后会得到一串哈希值,复制保留,稍等下有用.<br>exit() 退出ipython3界面</p>
+<h1 id="修改jupyterlab配置文件"><a href="#修改jupyterlab配置文件" class="headerlink" title="修改jupyterlab配置文件"></a>修改jupyterlab配置文件</h1><p>vim &#x2F;home&#x2F;UserName&#x2F;.jupyter&#x2F;jupyter_lab_config.py<br>修改删除以下内容前的 # 号和空格</p>
+<p>&#96;&#96;&#96;<br>c.NotebookApp.allow_remote_access &#x3D; True<br>c.NotebookApp.ip &#x3D; ‘0.0.0.0’                   # 允许任意IP段访问<br>c.NotebookApp.notebook_dir &#x3D; ‘pwd’             # 设置文件默认保存位置<br>c.NotebookApp.open_browser &#x3D; False             # 设置运行时不启动浏览器<br>c.NotebookApp.password &#x3D; u’sha1:**********’    # 设置前面生成的密码<br>c.NotebookApp.port &#x3D; 8888                      # 设置端口号<br>‘’’ </p>
 
     </div>
 
