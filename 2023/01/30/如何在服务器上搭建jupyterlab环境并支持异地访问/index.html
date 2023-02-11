@@ -33,11 +33,31 @@
         <hr>
     </div>
     <div class="post-content">
-        <h1 id="安装jupyterlab"><a href="#安装jupyterlab" class="headerlink" title="安装jupyterlab"></a>安装jupyterlab</h1><p>pip install –upgrade jupyter jupyterlab</p>
-<h1 id="生成JupyerLab配置文件"><a href="#生成JupyerLab配置文件" class="headerlink" title="生成JupyerLab配置文件"></a>生成JupyerLab配置文件</h1><p>jupyter lab –generate-config<br>    配置文件默认保存在: &#x2F;home&#x2F;UserName&#x2F;.jupyter&#x2F;jupyter_lab_config.py</p>
-<h1 id="设置jupyterlab登录密码"><a href="#设置jupyterlab登录密码" class="headerlink" title="设置jupyterlab登录密码"></a>设置jupyterlab登录密码</h1><p>ipython3<br>from jupyter_server.auth import passwd<br>passwd()<br>输入密码后会得到一串哈希值,复制保留,稍等下有用.<br>exit() 退出ipython3界面</p>
-<h1 id="修改jupyterlab配置文件"><a href="#修改jupyterlab配置文件" class="headerlink" title="修改jupyterlab配置文件"></a>修改jupyterlab配置文件</h1><p>vim &#x2F;home&#x2F;UserName&#x2F;.jupyter&#x2F;jupyter_lab_config.py<br>修改删除以下内容前的 # 号和空格</p>
-<p>&#96;&#96;&#96;<br>c.NotebookApp.allow_remote_access &#x3D; True<br>c.NotebookApp.ip &#x3D; ‘0.0.0.0’                   # 允许任意IP段访问<br>c.NotebookApp.notebook_dir &#x3D; ‘pwd’             # 设置文件默认保存位置<br>c.NotebookApp.open_browser &#x3D; False             # 设置运行时不启动浏览器<br>c.NotebookApp.password &#x3D; u’sha1:**********’    # 设置前面生成的密码<br>c.NotebookApp.port &#x3D; 8888                      # 设置端口号<br>‘’’ </p>
+        <h1 id="安装jupyterlab"><a href="#安装jupyterlab" class="headerlink" title="安装jupyterlab"></a>安装jupyterlab</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade jupyter jupyterlab</span><br></pre></td></tr></table></figure>
+
+<h1 id="生成JupyerLab配置文件"><a href="#生成JupyerLab配置文件" class="headerlink" title="生成JupyerLab配置文件"></a>生成JupyerLab配置文件</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter lab --generate-config </span><br></pre></td></tr></table></figure>
+<p>配置文件默认保存在: &#x2F;home&#x2F;UserName&#x2F;.jupyter&#x2F;jupyter_lab_config.py</p>
+<h1 id="设置jupyterlab登录密码"><a href="#设置jupyterlab登录密码" class="headerlink" title="设置jupyterlab登录密码"></a>设置jupyterlab登录密码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ipython3</span><br><span class="line">from jupyter_server.auth import passwd</span><br><span class="line">passwd()</span><br><span class="line">输入密码后会得到一串哈希值,复制保留,稍等下有用.</span><br><span class="line">exit() 退出ipython3界面</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改jupyterlab配置文件"><a href="#修改jupyterlab配置文件" class="headerlink" title="修改jupyterlab配置文件"></a>修改jupyterlab配置文件</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/UserName/.jupyter/jupyter_lab_config.py</span><br></pre></td></tr></table></figure>
+<p>修改删除以下内容前的 # 号和空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.allow_remote_access = True</span><br><span class="line">c.NotebookApp.ip = &#x27;0.0.0.0&#x27;                   # 允许任意IP段访问</span><br><span class="line">c.NotebookApp.notebook_dir = &#x27;pwd&#x27;             # 设置文件默认保存位置</span><br><span class="line">c.NotebookApp.open_browser = False             # 设置运行时不启动浏览器</span><br><span class="line">c.NotebookApp.password = u&#x27;sha1:**********&#x27;    # 设置前面生成的密码</span><br><span class="line">c.NotebookApp.port = 8888                      # 设置端口号</span><br></pre></td></tr></table></figure>
+
+<h1 id="设置中文环境"><a href="#设置中文环境" class="headerlink" title="设置中文环境"></a>设置中文环境</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyterlab-language-pack-zh-CN </span><br></pre></td></tr></table></figure>
+
+<h1 id="设置后台运行"><a href="#设置后台运行" class="headerlink" title="设置后台运行"></a>设置后台运行</h1><p>screen -S jupyterlab        # 开启一个名称为jupyterlab的会话<br>jupyterlab                  # 开启jupyterlab服务<br>                            # 快捷键 Ctrl + A + D 退出会话窗口, 服务仍然运行<br>screen -ls                  # 查看所有会话</p>
+<h1 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h1><h2 id="找到jupyterlab安装位置"><a href="#找到jupyterlab安装位置" class="headerlink" title="找到jupyterlab安装位置"></a>找到jupyterlab安装位置</h2><p>which jupyter-lab</p>
+<h2 id="创建运行脚本"><a href="#创建运行脚本" class="headerlink" title="创建运行脚本"></a>创建运行脚本</h2><p>#!&#x2F;bin&#x2F;sh</p>
+<p>&#x2F;home&#x2F;myjetson&#x2F;.local&#x2F;bin&#x2F;jupyter-lab  #（此处为jupyterlab安装位置，以上which jupyter-lab语句运行后内容）</p>
+<h2 id="修改运行脚本权限："><a href="#修改运行脚本权限：" class="headerlink" title="修改运行脚本权限："></a>修改运行脚本权限：</h2><p>chmod 777 文件名</p>
+<h2 id="测试脚本正确性"><a href="#测试脚本正确性" class="headerlink" title="测试脚本正确性"></a>测试脚本正确性</h2><p>.&#x2F;脚本文件名.sh</p>
+<h2 id="创建jupyterlab-service配置文件"><a href="#创建jupyterlab-service配置文件" class="headerlink" title="创建jupyterlab.service配置文件"></a>创建jupyterlab.service配置文件</h2><p>sudo vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;jupyter.service</p>
+<h2 id="粘贴以下内容到配置文件内"><a href="#粘贴以下内容到配置文件内" class="headerlink" title="粘贴以下内容到配置文件内"></a>粘贴以下内容到配置文件内</h2><p>[Unit]<br>Description&#x3D;Auto Load JupyterLab<br>After&#x3D;network.target</p>
+<p>[Service]<br>Type&#x3D;simple<br>User&#x3D;Ubuntu用户名<br>ExecStart&#x3D;运行脚本位置&#x2F;脚本文件名.sh<br>Restart&#x3D;on-failure<br>RestartSec&#x3D;15s</p>
+<p>[Install]<br>WantedBy&#x3D;multi-user.target</p>
+<h2 id="输入如下命令启动服务"><a href="#输入如下命令启动服务" class="headerlink" title="输入如下命令启动服务"></a>输入如下命令启动服务</h2><p>sudo systemctl daemon-reload    # 让systemd重新加载service文件<br>sudo systemctl enable jupyter.service    # 设置开机自启</p>
+<h2 id="检查服务是否正常启动"><a href="#检查服务是否正常启动" class="headerlink" title="检查服务是否正常启动"></a>检查服务是否正常启动</h2><p>sudo systemctl start jupyter.service<br>sudo systemctl status jupyter.service</p>
+<h2 id="如需关闭请输入以下命令"><a href="#如需关闭请输入以下命令" class="headerlink" title="如需关闭请输入以下命令"></a>如需关闭请输入以下命令</h2><p>sudo systemctl stop jupyter.service</p>
 
     </div>
 
